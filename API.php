@@ -19,39 +19,24 @@ use Piwik\DataTable\Row;
 class API extends \Piwik\Plugin\API
 {
     /**
-     * Example method. Please remove if you do not need this API method.
      * You can call this API method like this:
      * /index.php?module=API&method=LDbaseReports.getAnswerToLife
      * /index.php?module=API&method=LDbaseReports.getAnswerToLife&truth=0
      *
-     * @param  bool $truth
-     *
-     * @return int
-     */
-    public function getAnswerToLife($truth = true)
-    {
-        if ($truth) {
-            return 42;
-        }
-
-        return 24;
-    }
-
-    /**
-     * Another example method that returns a data table.
      * @param int    $idSite
-     * @param string $period
-     * @param string $date
-     * @param bool|string $segment
+     * @param int    $idNode
+     *
      * @return DataTable
      */
-    public function getExampleReport($idSite, $period, $date, $segment = false)
+    public function getNodeUsage($idSite, $idNode)
     {
-        $table = DataTable::makeFromSimpleArray(array(
-            array('label' => 'My Label 1', 'nb_visits' => '1'),
-            array('label' => 'My Label 2', 'nb_visits' => '5'),
-        ));
 
-        return $table;
+	$result = array(
+		"nid" => $idNode,
+		"views" => 1, 
+		"downloads" => 1, 
+	);
+
+	return $result;
     }
 }
