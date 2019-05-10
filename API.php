@@ -18,25 +18,34 @@ use Piwik\DataTable\Row;
  */
 class API extends \Piwik\Plugin\API
 {
-    /**
-     * You can call this API method like this:
-     * /index.php?module=API&method=LDbaseReports.getAnswerToLife
-     * /index.php?module=API&method=LDbaseReports.getAnswerToLife&truth=0
-     *
-     * @param int    $idSite
-     * @param int    $idNode
-     *
-     * @return DataTable
-     */
+
     public function getNodeUsage($idSite, $idNode)
     {
+        $current_date = date('Y-m-d', time());
+        $date_range = "1992-01-01,{$current_date}";
 
-	$result = array(
-		"nid" => $idNode,
-		"views" => 1, 
-		"downloads" => 1, 
-	);
+        #$views_action = 'getPageUrls';
+        #$downloads_action = 'getDownloads';
+        $url_prefix = "http://localhost/matomo/index.php?module=API&method=Actions.";
+        $url_suffix = "&idSite={$idSite}&period=range&date={$date_range}&format=json&segment=customVariablePageName1==nid;customVariablePageValue1=={$idNode}";
 
-	return $result;
+        $page_results = json_decode(file_get_contents("{$url_prefix}getPageUrls{$url_suffix}"), TRUE);
+        $page_visits = $page_results[0]['nb_visits'];
+        $page_hits = $page_results[0]['nb_hits'];
+
+        $download_results = json_decode(file_get_contents("{$url_prefix}getDownloads{$url_suffix}"), TRUE);
+        $download_visits = $download_results[0]['nb_visits'];
+        $download_hits = $download_results[0]['nb_hits'];
+
+        $response = array(
+          "nid" => $idNode,
+          "page_visits" => $page_visits, 
+          "page_hits" => $page_hits, 
+          "download_visits" => $download_visits, 
+          "download_hits" => $download_hits, 
+        );
+
+	      return $response;
     }
+
 }
