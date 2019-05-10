@@ -1,0 +1,26 @@
+{
+    "name": "LDbaseReports",
+    "description": "A Matomo plugin that provides an API for getting LDbase usage data.",
+    "version": "0.1.0",
+    "theme": false,
+    "require": {
+        "piwik": ">=3.9.1-stable,<4.0.0-b1"
+    },
+    "authors": [
+        {
+            "name": "Bryan J. Brown",
+            "email": "bryjbrown@gmail.com",
+            "homepage": "https://bryjbrown.github.io/"
+        }
+    ],
+    "support": {
+        "email": "bryjbrown@gmail.com",
+        "issues": "https://github.com/ldbase/LDbaseReports/issues",
+        "wiki": "https://github.com/ldbase/LDbaseReports/wiki",
+        "source": "https://github.com/ldbase/LDbaseReports",
+        "docs": "https://github.com/ldbase/LDbaseReports/tree/master/docs"
+    },
+    "homepage": "https://github.com/ldbase/LDbaseReports",
+    "license": "GPL v3+",
+    "keywords": ["LDbase", "Islandora", "Drupal", "digital repositories"]
+}
