@@ -45,7 +45,7 @@ class API extends \Piwik\Plugin\API
           "download_hits" => $download_hits, 
         );
 
-	      return $response;
+	return $response;
     }
 
 }
