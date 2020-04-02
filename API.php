@@ -21,6 +21,8 @@ class API extends \Piwik\Plugin\API
 
     public function getNodeUsage($idSite, $idNode)
     {
+
+        /*
         $current_date = date('Y-m-d', time());
         $date_range = "1992-01-01,{$current_date}";
 
@@ -43,6 +45,14 @@ class API extends \Piwik\Plugin\API
           "page_hits" => $page_hits, 
           "download_visits" => $download_visits, 
           "download_hits" => $download_hits, 
+        );
+        */
+        $views = rand(0, 100);
+        $downloads = rand(0, 100);
+
+        $response = array(
+          "views" => $views, 
+          "downloads" => $downloads, 
         );
 
 	return $response;
